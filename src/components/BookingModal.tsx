@@ -102,25 +102,44 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           </div>
         ) : (
           <div>
-            <div style={{ marginBottom: '22px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px' }}>
               <div
                 style={{
-                  fontSize: '0.78rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'var(--gold-600)',
-                  marginBottom: '4px',
+                  width: '54px',
+                  height: '54px',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  border: '2px solid var(--gold-500)',
+                  boxShadow: '0 3px 12px rgba(11,25,44,0.15)',
+                  background: 'var(--navy-950)',
+                  flexShrink: 0,
                 }}
               >
-                ROYAL CAB SERVICE
+                <img
+                  src="/images/branding/royal-cab-logo.jpg"
+                  alt="Royal Cab Service Emblem"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
               </div>
-              <h2 style={{ fontSize: '1.65rem', color: 'var(--navy-900)' }}>
-                Book a Cab &amp; Travel Enquiry
-              </h2>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem' }}>
-                Fill in your trip specifications; get quote and vehicle availability.
-              </p>
+              <div>
+                <div
+                  style={{
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: 'var(--gold-600)',
+                  }}
+                >
+                  ROYAL CAB SERVICE
+                </div>
+                <h2 style={{ fontSize: '1.45rem', color: 'var(--navy-900)', lineHeight: 1.2 }}>
+                  Book a Cab &amp; Travel Enquiry
+                </h2>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', margin: 0 }}>
+                  Fill in your trip specifications; get quote and vehicle availability.
+                </p>
+              </div>
             </div>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>

@@ -29,11 +29,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBookingModal }) => {
       <div className="container navbar-inner">
         {/* Logo / Brand */}
         <a href="#home" className="nav-brand" aria-label="Royal Cab Service Home">
-          <img
-            src="/images/branding/royal-logo.svg"
-            alt="Royal Cab Service Logo"
-            className="nav-brand-img"
-          />
+          <div className="nav-logo-wrap">
+            <img
+              src="/images/branding/royal-cab-logo.jpg"
+              alt="Royal Cab Service Emblem"
+              className="nav-brand-logo-img"
+            />
+          </div>
+          <div className="nav-brand-text">
+            <span className="nav-brand-name">
+              ROYAL <span className="nav-brand-gold">CAB</span> SERVICE
+            </span>
+            <span className="nav-brand-sub">
+              Jodhpur • Gandhinagar
+            </span>
+          </div>
         </a>
 
         {/* Desktop Navigation */}

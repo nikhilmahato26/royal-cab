@@ -10,12 +10,52 @@ export const Footer: React.FC = () => {
         <div className="footer-grid">
           {/* Col 1: Brand & Positioning */}
           <div className="footer-col">
-            <div style={{ marginBottom: '16px' }}>
-              <img
-                src="/images/branding/royal-logo-white.svg"
-                alt="Royal Cab Service"
-                style={{ height: '54px', width: 'auto' }}
-              />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>
+              <div
+                style={{
+                  width: '62px',
+                  height: '62px',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  border: '2px solid var(--gold-500)',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.5)',
+                  background: 'var(--navy-950)',
+                  flexShrink: 0,
+                }}
+              >
+                <img
+                  src="/images/branding/royal-cab-logo.jpg"
+                  alt="Royal Cab Service Logo"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              <div>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '1.25rem',
+                    fontWeight: 800,
+                    letterSpacing: '0.04em',
+                    color: '#FFFFFF',
+                    lineHeight: 1.15,
+                  }}
+                >
+                  ROYAL <span style={{ color: 'var(--gold-400)' }}>CAB</span> SERVICE
+                </div>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: '0.65rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.14em',
+                    color: 'var(--gold-300)',
+                    textTransform: 'uppercase',
+                    marginTop: '2px',
+                  }}
+                >
+                  LUXURY • RELIABILITY • COMFORT
+                </div>
+              </div>
             </div>
             <p
               style={{

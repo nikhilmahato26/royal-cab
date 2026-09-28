@@ -17,9 +17,30 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBookingModal, onEnquirySuccess
           {/* Left Column: Brand, Headings, Value & CTAs */}
           <div className="hero-content">
             {/* Eyebrow */}
-            <div className="hero-eyebrow">
-              <Sparkles size={14} style={{ color: 'var(--gold-600)' }} />
-              <span>{BUSINESS_DATA.name.toUpperCase()}</span>
+            {/* Eyebrow with Official Logo Emblem */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
+              <div
+                style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  border: '2px solid var(--gold-500)',
+                  boxShadow: '0 3px 12px rgba(11,25,44,0.18)',
+                  background: 'var(--navy-950)',
+                  flexShrink: 0,
+                }}
+              >
+                <img
+                  src="/images/branding/royal-cab-logo.jpg"
+                  alt="Royal Cab Service Emblem"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              <div className="hero-eyebrow" style={{ margin: 0 }}>
+                <Sparkles size={14} style={{ color: 'var(--gold-600)' }} />
+                <span>{BUSINESS_DATA.name.toUpperCase()}</span>
+              </div>
             </div>
 
             {/* Main Heading */}
