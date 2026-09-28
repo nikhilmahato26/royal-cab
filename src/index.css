@@ -1213,6 +1213,250 @@ img {
 }
 
 /* ==========================================================================
+   EXACT FLEET CARDS (Matching Screenshot Structure)
+   ========================================================================== */
+.fleet-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px 24px;
+}
+
+@media (min-width: 640px) {
+  .fleet-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .fleet-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fleet-showcase-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1.5px solid #E2E8F0;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+}
+
+.fleet-showcase-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.09);
+  border-color: #CBD5E1;
+}
+
+.fleet-showcase-card.popular-card {
+  border: 2px solid #EAB308;
+  box-shadow: 0 8px 30px rgba(234, 179, 8, 0.22);
+}
+
+.fleet-popular-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #EAB308;
+  color: #0F172A;
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 4px 16px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(234, 179, 8, 0.35);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 3;
+}
+
+.fleet-card-img-box {
+  background: #F8FAFC;
+  border-radius: 14px;
+  padding: 16px 12px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border: 1px solid #F1F5F9;
+}
+
+.fleet-card-img {
+  max-width: 92%;
+  max-height: 165px;
+  object-fit: contain;
+  transition: transform 0.35s ease;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.08));
+}
+
+.fleet-showcase-card:hover .fleet-card-img {
+  transform: scale(1.05);
+}
+
+.fleet-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.fleet-car-name {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.25;
+}
+
+.fleet-car-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.fleet-tag-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.fleet-category-pill {
+  background: #EFF6FF;
+  color: #2563EB;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: var(--radius-full);
+}
+
+.fleet-price-wrap {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.fleet-price-unit {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #64748B;
+}
+
+.fleet-specs-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.fleet-spec-item {
+  background: #F8FAFC;
+  color: #475569;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.fleet-suitable-wrap {
+  margin-bottom: 24px;
+}
+
+.fleet-suitable-heading {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #94A3B8;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.fleet-suitable-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.fleet-suitable-point {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: #334155;
+}
+
+.fleet-suitable-check {
+  color: #EAB308;
+  flex-shrink: 0;
+}
+
+.btn-fleet-action {
+  width: 100%;
+  background: #EFF6FF;
+  color: #1E40AF;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 13px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-fleet-action:hover {
+  background: #1E3A8A;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(30, 58, 138, 0.25);
+}
+
+.btn-fleet-popular-action {
+  width: 100%;
+  background: #EAB308;
+  color: #0F172A;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(234, 179, 8, 0.35);
+}
+
+.btn-fleet-popular-action:hover {
+  background: #F59E0B;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(234, 179, 8, 0.5);
+}
+
+/* ==========================================================================
    VEHICLE REQUIREMENT CTA SECTION
    ========================================================================== */
 .vehicle-cta-section {

@@ -15,8 +15,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenBookingModal }
           <div className="about-image-col">
             <div className="about-image-wrap">
               <img
-                src="/images/about-journey.jpg"
-                alt="Royal Cab Service comfortable journey in Rajasthan and Gujarat"
+                src="/images/gallery/gallery-heritage-palace.jpg"
+                alt="Royal Cab Service vehicle at Rajasthan heritage palace in Jodhpur"
                 className="about-image"
                 loading="lazy"
               />

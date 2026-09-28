@@ -1,9 +1,9 @@
 import React from 'react';
-import { ArrowRight, Check, Users } from 'lucide-react';
+import { Check, Star, Sparkles } from 'lucide-react';
 import { BUSINESS_DATA } from '../data/business';
 
 interface VehicleSectionProps {
-  onSelectVehicle: (vehicleCategoryTitle: string) => void;
+  onSelectVehicle: (vehicleName: string, rate?: string) => void;
 }
 
 export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle }) => {
@@ -12,67 +12,108 @@ export const VehicleSection: React.FC<VehicleSectionProps> = ({ onSelectVehicle 
       <div className="container">
         {/* Header */}
         <div className="section-header">
-          <div className="section-eyebrow">VERSATILE FLEET CATEGORIES</div>
+          <div className="section-eyebrow">
+            <Sparkles size={13} style={{ color: 'var(--gold-600)' }} />
+            <span>TRANSPARENT RATES &amp; AVAILABILITY</span>
+          </div>
           <h2 className="section-title">Vehicles for Every Requirement</h2>
           <p className="section-subtitle">
-            Tell us what you need — we'll help arrange a suitable vehicle for your journey.
+            Choose from our well-maintained fleet of Sedans, MPVs, SUVs, and Tempo Travellers at transparent per-kilometer rates for local and outstation travel.
           </p>
         </div>
 
-        {/* Category-based Cards */}
-        <div className="vehicles-grid">
-          {BUSINESS_DATA.vehicleCategories.map((vehicle) => (
-            <div key={vehicle.id} className="vehicle-card">
-              {/* Category Image Preview */}
-              <div className="vehicle-card-img-wrap">
-                <img
-                  src={vehicle.image}
-                  alt={`Royal Cab Service ${vehicle.title}`}
-                  className="vehicle-card-img"
-                  loading="lazy"
-                />
-                <span className="vehicle-badge">{vehicle.badge}</span>
-              </div>
+        {/* 6 Exact Fleet Cards Matching Screenshot */}
+        <div className="fleet-cards-grid">
+          {BUSINESS_DATA.fleetVehicles.map((vehicle) => {
+            const isPopular = Boolean(vehicle.isPopular);
 
-              {/* Body */}
-              <div className="vehicle-card-body">
+            return (
+              <div
+                key={vehicle.id}
+                className={`fleet-showcase-card ${isPopular ? 'popular-card' : ''}`}
+              >
+                {/* Most Popular Floating Badge */}
+                {isPopular && (
+                  <div className="fleet-popular-badge">
+                    <Star size={13} fill="#0F172A" />
+                    <span>Most Popular</span>
+                  </div>
+                )}
+
                 <div>
-                  <h3 className="vehicle-card-title">{vehicle.title}</h3>
-                  <div className="vehicle-capacity">
-                    <Users size={13} style={{ color: 'var(--gold-600)' }} />
-                    <span>{vehicle.capacity}</span>
+                  {/* Top Vehicle Image Box */}
+                  <div className="fleet-card-img-box">
+                    <img
+                      src={vehicle.image}
+                      alt={vehicle.name}
+                      className="fleet-card-img"
+                      loading="lazy"
+                    />
                   </div>
 
-                  <p className="vehicle-card-desc">{vehicle.description}</p>
+                  {/* Title & Emoji Icon */}
+                  <div className="fleet-header-row">
+                    <h3 className="fleet-car-name">{vehicle.name}</h3>
+                    <span className="fleet-car-icon" aria-hidden="true">
+                      {vehicle.iconEmoji}
+                    </span>
+                  </div>
 
-                  <ul className="vehicle-highlights">
-                    {vehicle.highlights.map((h, i) => (
-                      <li key={i}>
-                        <Check size={14} />
-                        <span>{h}</span>
-                      </li>
+                  {/* Category Tag & Rate */}
+                  <div className="fleet-tag-price-row">
+                    <span className="fleet-category-pill">
+                      {vehicle.categoryTag}
+                    </span>
+                    <div className="fleet-price-wrap">
+                      {vehicle.priceDisplay.startsWith('₹') ? (
+                        <>
+                          <span>₹{vehicle.pricePerKm}</span>
+                          <span className="fleet-price-unit">/km</span>
+                        </>
+                      ) : (
+                        <span style={{ fontSize: '1.05rem', color: 'var(--gold-700)', fontWeight: 700 }}>
+                          {vehicle.priceDisplay}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Specification Badges / Pills */}
+                  <div className="fleet-specs-pills">
+                    {vehicle.specs.map((spec, sIdx) => (
+                      <span key={sIdx} className="fleet-spec-item">
+                        {spec}
+                      </span>
                     ))}
-                  </ul>
+                  </div>
+
+                  {/* SUITABLE FOR Section */}
+                  <div className="fleet-suitable-wrap">
+                    <div className="fleet-suitable-heading">SUITABLE FOR</div>
+                    <ul className="fleet-suitable-items">
+                      {vehicle.suitableFor.map((item, iIdx) => (
+                        <li key={iIdx} className="fleet-suitable-point">
+                          <Check size={14} className="fleet-suitable-check" strokeWidth={3} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
-                <div style={{ marginTop: '16px' }}>
+                {/* Bottom Action Button */}
+                <div style={{ marginTop: '14px' }}>
                   <button
-                    onClick={() => onSelectVehicle(vehicle.title)}
-                    className="btn btn-navy btn-sm"
-                    style={{ width: '100%' }}
-                    id={`vehicle-card-${vehicle.id}`}
+                    onClick={() => onSelectVehicle(vehicle.name, vehicle.priceDisplay)}
+                    className={isPopular ? 'btn-fleet-popular-action' : 'btn-fleet-action'}
+                    id={`book-fleet-${vehicle.id}`}
                   >
-                    <span>
-                      {vehicle.id === 'customized-vehicle'
-                        ? 'Discuss Requirement'
-                        : 'Enquire for Vehicle'}
-                    </span>
-                    <ArrowRight size={14} style={{ color: 'var(--gold-400)' }} />
+                    <span>{vehicle.buttonText}</span>
                   </button>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -177,11 +177,12 @@ export const VehicleRequirementCta: React.FC<VehicleRequirementCtaProps> = ({ on
                           value={formData.vehicleRequirement}
                           onChange={handleChange}
                         >
-                          {BUSINESS_DATA.vehicleCategories.map((v) => (
-                            <option key={v.id} value={v.title}>
-                              {v.title}
+                          {BUSINESS_DATA.fleetVehicles.map((v) => (
+                            <option key={v.id} value={`${v.name} (${v.priceDisplay})`}>
+                              {v.name} — {v.priceDisplay} ({v.categoryTag})
                             </option>
                           ))}
+                          <option value="Any Available Vehicle">Any Available Vehicle</option>
                         </select>
                       </div>
                     </div>

@@ -69,6 +69,27 @@ export interface BusinessData {
     description: string;
     icon: string;
   }[];
+  galleryItems: {
+    id: string;
+    title: string;
+    category: string;
+    location: string;
+    image: string;
+    description: string;
+  }[];
+  fleetVehicles: {
+    id: string;
+    name: string;
+    categoryTag: string;
+    pricePerKm: string;
+    priceDisplay: string;
+    iconEmoji: string;
+    image: string;
+    isPopular?: boolean;
+    specs: string[];
+    suitableFor: string[];
+    buttonText: string;
+  }[];
 }
 
 export const BUSINESS_DATA: BusinessData = {
@@ -410,6 +431,142 @@ export const BUSINESS_DATA: BusinessData = {
       title: 'Enjoy Your Journey',
       description:
         'Travel relaxed with our dependable vehicle service and attentive customer assistance.',
+    },
+  ],
+  galleryItems: [
+    {
+      id: 'g-heritage-palace',
+      title: 'Heritage Palace Courtyard',
+      category: 'Heritage Sightseeing',
+      location: 'Jodhpur, Rajasthan',
+      image: '/images/gallery/gallery-heritage-palace.jpg',
+      description:
+        'Our premium white vehicle stationed in the grand sandstone courtyard of a Rajasthan heritage palace in Jodhpur.',
+    },
+    {
+      id: 'g-palace-porch',
+      title: 'Royal Resort Arrival & Porch',
+      category: 'Hotels & Stays',
+      location: 'Palace Resort Entrance',
+      image: '/images/gallery/gallery-palace-porch.jpg',
+      description:
+        'Comfortable passenger drop-off and pickup service at luxury hotels and heritage palace resorts.',
+    },
+    {
+      id: 'g-chokho-jodhpur-wide',
+      title: 'Chokho Jodhpur Landmark Tour',
+      category: 'City Sightseeing',
+      location: 'Chokho Jodhpur, Nagar Nigam',
+      image: '/images/gallery/gallery-chokho-jodhpur-wide.jpg',
+      description:
+        'Touring prominent city spots and municipal landmarks with punctual, air-conditioned vehicle service.',
+    },
+    {
+      id: 'g-chokho-jodhpur-1',
+      title: 'Gujarat & Rajasthan Travel Corridor',
+      category: 'Outstation Routes',
+      location: 'Gandhinagar & Jodhpur Routes',
+      image: '/images/gallery/gallery-chokho-jodhpur-1.jpg',
+      description:
+        'Connecting travel routes across our operational bases in Rajasthan and Gujarat seamlessly.',
+    },
+    {
+      id: 'g-chokho-jodhpur-2',
+      title: 'Local Attractions & Sightseeing',
+      category: 'City Sightseeing',
+      location: 'Jodhpur City',
+      image: '/images/gallery/gallery-chokho-jodhpur-2.jpg',
+      description:
+        'Custom vehicle arrangements for local sightseeing, family city tours, and point-to-point journeys.',
+    },
+    {
+      id: 'g-dest-scenic',
+      title: 'Scenic Highway Travel',
+      category: 'Outstation Routes',
+      location: 'Highway Scenic Route',
+      image: '/images/destinations/dest-5.jpg',
+      description:
+        'Dependable outstation journeys with verified drivers, luggage space, and smooth highway handling.',
+    },
+  ],
+  fleetVehicles: [
+    {
+      id: 'toyota-etios',
+      name: 'Toyota Etios',
+      categoryTag: 'Sedan',
+      pricePerKm: '11',
+      priceDisplay: '₹11/km',
+      iconEmoji: '🚗',
+      image: '/images/fleet/toyota_etios.png',
+      specs: ['5 Seater', 'Air Conditioned', 'Comfortable Sedan'],
+      suitableFor: ['Local Travel', 'Airport Transfers', 'Business Trips'],
+      buttonText: 'Book Now',
+    },
+    {
+      id: 'maruti-dzire',
+      name: 'Maruti Suzuki Dzire',
+      categoryTag: 'Sedan',
+      pricePerKm: '12',
+      priceDisplay: '₹12/km',
+      iconEmoji: '🚗',
+      image: '/images/fleet/swift_dzire.png',
+      specs: ['5 Seater', 'Air Conditioned', 'Comfortable Seating'],
+      suitableFor: ['Daily Travel', 'Local Trips', 'Family Travel'],
+      buttonText: 'Book Now',
+    },
+    {
+      id: 'maruti-ertiga',
+      name: 'Maruti Suzuki Ertiga',
+      categoryTag: 'MPV',
+      pricePerKm: '13',
+      priceDisplay: '₹13/km',
+      iconEmoji: '🚐',
+      image: '/images/fleet/maruti_ertiga.png',
+      specs: ['7 Seater', 'Spacious Interior', 'Air Conditioned'],
+      suitableFor: ['Family Trips', 'Small Groups', 'Airport Transfers'],
+      buttonText: 'Book Now',
+    },
+    {
+      id: 'kia-carens',
+      name: 'Kia Carens',
+      categoryTag: 'Premium MPV',
+      pricePerKm: '15',
+      priceDisplay: '₹15/km',
+      iconEmoji: '🚐',
+      image: '/images/fleet/kia_carens.png',
+      specs: ['6/7 Seater', 'Premium Interiors', 'Air Conditioned'],
+      suitableFor: ['Family Tours', 'Long Distance Travel', 'Premium Trips'],
+      buttonText: 'Book Now',
+    },
+    {
+      id: 'innova-crysta',
+      name: 'Toyota Innova Crysta',
+      categoryTag: 'Premium SUV',
+      pricePerKm: '18',
+      priceDisplay: '₹18/km',
+      isPopular: true,
+      iconEmoji: '🚙',
+      image: '/images/fleet/innova_crysta.png',
+      specs: [
+        '7 Seater',
+        'Premium Comfort',
+        'Large Luggage Space',
+        'Air Conditioned',
+      ],
+      suitableFor: ['Temple Tours', 'Airport Transfers', 'Hospital Trips'],
+      buttonText: 'Book Innova Crysta',
+    },
+    {
+      id: 'tempo-traveller',
+      name: 'Tempo Traveller',
+      categoryTag: 'Group Vehicle',
+      pricePerKm: '24',
+      priceDisplay: 'On Enquiry',
+      iconEmoji: '🚌',
+      image: '/images/fleet/tempo_traveller.png',
+      specs: ['Pushback Seats', 'Air Conditioned', 'Group Capacity'],
+      suitableFor: ['Group Tours', 'Temple Trips', 'Functions'],
+      buttonText: 'Book Traveller',
     },
   ],
 };

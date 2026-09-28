@@ -214,11 +214,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     value={formData.vehicleRequirement}
                     onChange={handleChange}
                   >
-                    {BUSINESS_DATA.vehicleCategories.map((v) => (
-                      <option key={v.id} value={v.title}>
-                        {v.title}
+                    {BUSINESS_DATA.fleetVehicles.map((v) => (
+                      <option key={v.id} value={`${v.name} (${v.priceDisplay})`}>
+                        {v.name} — {v.priceDisplay} ({v.categoryTag})
                       </option>
                     ))}
+                    <option value="Customized Vehicle Requirement">Customized Vehicle Requirement</option>
                   </select>
                 </div>
               </div>

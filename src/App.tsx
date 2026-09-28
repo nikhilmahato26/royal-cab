@@ -9,6 +9,7 @@ import { VehicleSection } from './components/VehicleSection';
 import { VehicleRequirementCta } from './components/VehicleRequirementCta';
 import { SightseeingSection } from './components/SightseeingSection';
 import { HotelSection } from './components/HotelSection';
+import { GallerySection } from './components/GallerySection';
 import { TravelJourneySection } from './components/TravelJourneySection';
 import { LocationsSection } from './components/LocationsSection';
 import { ContactSection } from './components/ContactSection';
@@ -80,9 +81,11 @@ export const App: React.FC = () => {
         {/* 6. Five Premium Services */}
         <ServicesSection onSelectService={handleServiceSelect} />
 
-        {/* 7. Category-based Vehicles Section */}
+        {/* 7. Fleet Section with All Exact Vehicles & Rates */}
         <VehicleSection
-          onSelectVehicle={(vehTitle) => handleOpenBookingModal(vehTitle)}
+          onSelectVehicle={(vehTitle, rate) =>
+            handleOpenBookingModal(rate ? `${vehTitle} (${rate})` : vehTitle)
+          }
         />
 
         {/* 8. Large Interactive Specific Vehicle Requirement Section */}
@@ -102,7 +105,14 @@ export const App: React.FC = () => {
           }
         />
 
-        {/* 11. Travel Journey - 6-Step Visual Process */}
+        {/* 11. Authentic Fleet & Travel Gallery Section */}
+        <GallerySection
+          onBookTrip={(tripName) =>
+            handleOpenBookingModal('SUV', tripName || 'Sightseeing')
+          }
+        />
+
+        {/* 12. Travel Journey - 6-Step Visual Process */}
         <TravelJourneySection onStartJourney={() => handleOpenBookingModal()} />
 
         {/* 12. Strategic Business Operating Locations (Jodhpur & Gandhinagar) */}

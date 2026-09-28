@@ -140,11 +140,12 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({
             value={formData.vehicleRequirement}
             onChange={handleChange}
           >
-            {BUSINESS_DATA.vehicleCategories.map((v) => (
-              <option key={v.id} value={v.title}>
-                {v.title} ({v.capacity})
+            {BUSINESS_DATA.fleetVehicles.map((v) => (
+              <option key={v.id} value={`${v.name} (${v.priceDisplay})`}>
+                {v.name} — {v.priceDisplay} ({v.categoryTag})
               </option>
             ))}
+            <option value="Custom Vehicle Requirement">Other / Custom Requirement</option>
           </select>
         </div>
 
