@@ -130,6 +130,12 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
+                <a href="#testimonials">
+                  <ChevronRight size={14} style={{ color: 'var(--gold-400)' }} />
+                  <span>Client Reviews & Ratings</span>
+                </a>
+              </li>
+              <li>
                 <a href="#contact">
                   <ChevronRight size={14} style={{ color: 'var(--gold-400)' }} />
                   <span>Contact Royal Cab</span>

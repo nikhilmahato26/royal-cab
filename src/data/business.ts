@@ -22,6 +22,7 @@ export interface BusinessData {
     secondaryDisplay: string;
   };
   email: string;
+  aboutVideoUrl?: string;
   locations: {
     jodhpur: BusinessLocation;
     gandhinagar: BusinessLocation;
@@ -108,6 +109,8 @@ export const BUSINESS_DATA: BusinessData = {
     secondaryDisplay: '+91 82792 56012',
   },
   email: 'Balajistore1243@gmail.com',
+  aboutVideoUrl:
+    'https://res.cloudinary.com/dynbpb9u0/video/upload/v1790662379/WhatsApp_Video_2026-09-29_at_10.52.46_vxosrv.mp4',
   locations: {
     jodhpur: {
       label: 'Primary Operating Location (Rajasthan)',

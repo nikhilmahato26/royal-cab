@@ -1,5 +1,16 @@
-import React from 'react';
-import { MapPin, ArrowRight, CheckCircle2 } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import {
+  MapPin,
+  ArrowRight,
+  CheckCircle2,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Film,
+  Camera,
+  Sparkles,
+} from 'lucide-react';
 import { BUSINESS_DATA } from '../data/business';
 
 interface AboutSectionProps {
@@ -7,19 +18,149 @@ interface AboutSectionProps {
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenBookingModal }) => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const [activeMedia, setActiveMedia] = useState<'video' | 'photo'>('video');
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  };
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    const nextMuted = !isMuted;
+    videoRef.current.muted = nextMuted;
+    setIsMuted(nextMuted);
+  };
+
   return (
     <section className="section section-bg-light" id="about">
       <div className="container">
         <div className="about-grid">
-          {/* Left Column: Image with Subtle Accent */}
+          {/* Left Column: Interactive Video Showcase / Photo Toggle */}
           <div className="about-image-col">
-            <div className="about-image-wrap">
-              <img
-                src="/images/gallery/gallery-heritage-palace.jpg"
-                alt="Royal Cab Service vehicle at Rajasthan heritage palace in Jodhpur"
-                className="about-image"
-                loading="lazy"
-              />
+            <div className="about-media-wrapper">
+              {/* Media Switcher Tabs */}
+              <div className="about-media-tabs">
+                <button
+                  type="button"
+                  onClick={() => setActiveMedia('video')}
+                  className={`about-media-tab-btn ${
+                    activeMedia === 'video' ? 'active' : ''
+                  }`}
+                  aria-label="View Fleet Video"
+                >
+                  <Film size={14} />
+                  <span>Fleet in Action</span>
+                  <span className="live-dot-pulse" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveMedia('photo')}
+                  className={`about-media-tab-btn ${
+                    activeMedia === 'photo' ? 'active' : ''
+                  }`}
+                  aria-label="View Heritage Fleet Photo"
+                >
+                  <Camera size={14} />
+                  <span>Palace Fleet</span>
+                </button>
+              </div>
+
+              {/* Main Media Display */}
+              {activeMedia === 'video' ? (
+                <div className="about-video-container">
+                  {/* Status Overlay Badge */}
+                  <div className="about-video-top-badge">
+                    <span className="about-video-pulse-dot" />
+                    <span>Royal Cab Fleet • On-Road Video</span>
+                  </div>
+
+                  {/* HTML5 Video Player */}
+                  <video
+                    ref={videoRef}
+                    src={
+                      BUSINESS_DATA.aboutVideoUrl ||
+                      'https://res.cloudinary.com/dynbpb9u0/video/upload/v1790662379/WhatsApp_Video_2026-09-29_at_10.52.46_vxosrv.mp4'
+                    }
+                    className="about-video-element"
+                    autoPlay
+                    loop
+                    muted={isMuted}
+                    playsInline
+                    preload="metadata"
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                    onClick={togglePlay}
+                    aria-label="Royal Cab Service Fleet in Action video"
+                  />
+
+                  {/* Custom Controls Bar */}
+                  <div className="about-video-controls-overlay">
+                    <div className="about-video-controls-left">
+                      <button
+                        type="button"
+                        onClick={togglePlay}
+                        className="about-video-ctrl-btn"
+                        aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                        title={isPlaying ? 'Pause' : 'Play'}
+                      >
+                        {isPlaying ? <Pause size={17} /> : <Play size={17} style={{ marginLeft: '2px' }} />}
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={toggleMute}
+                        className={`about-video-ctrl-btn ${isMuted ? 'muted-btn' : 'unmuted-btn'}`}
+                        aria-label={isMuted ? 'Unmute sound' : 'Mute sound'}
+                        title={isMuted ? 'Unmute sound' : 'Mute sound'}
+                      >
+                        {isMuted ? <VolumeX size={17} /> : <Volume2 size={17} />}
+                        <span className="about-video-audio-hint">
+                          {isMuted ? 'Tap for audio' : 'Sound on'}
+                        </span>
+                      </button>
+                    </div>
+
+                    <div className="about-video-caption-tag">
+                      <span>Jodhpur • Gandhinagar</span>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="about-image-wrap">
+                  <img
+                    src="/images/gallery/gallery-heritage-palace.jpg"
+                    alt="Royal Cab Service vehicle at Rajasthan heritage palace in Jodhpur"
+                    className="about-image"
+                    loading="lazy"
+                  />
+                  <div className="about-image-caption">
+                    <Sparkles size={14} style={{ color: 'var(--gold-400)' }} />
+                    <span>Rajasthan Heritage Palace Tour & Outstation Cab</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Bottom Quick Feature Highlights */}
+              <div className="about-media-footer-strip">
+                <div className="about-media-footer-pill">
+                  <CheckCircle2 size={13} style={{ color: 'var(--gold-500)' }} />
+                  <span>Sanitized & Verified Fleet</span>
+                </div>
+                <div className="about-media-footer-pill">
+                  <CheckCircle2 size={13} style={{ color: 'var(--gold-500)' }} />
+                  <span>Experienced Chauffeurs</span>
+                </div>
+              </div>
             </div>
           </div>
 

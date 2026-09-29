@@ -18,6 +18,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBookingModal }) => {
     { label: 'Sightseeing', href: '#sightseeing' },
     { label: 'Hotel Booking', href: '#hotels' },
     { label: 'Gallery', href: '#gallery' },
+    { label: 'Reviews', href: '#testimonials' },
+    { label: 'Locations', href: '#locations' },
     { label: 'Contact', href: '#contact' },
   ];
 

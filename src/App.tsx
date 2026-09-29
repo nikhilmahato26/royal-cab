@@ -11,6 +11,7 @@ import { SightseeingSection } from './components/SightseeingSection';
 import { HotelSection } from './components/HotelSection';
 import { GallerySection } from './components/GallerySection';
 import { TravelJourneySection } from './components/TravelJourneySection';
+import { TestimonialsSection } from './components/TestimonialsSection';
 import { LocationsSection } from './components/LocationsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
@@ -115,10 +116,17 @@ export const App: React.FC = () => {
         {/* 12. Travel Journey - 6-Step Visual Process */}
         <TravelJourneySection onStartJourney={() => handleOpenBookingModal()} />
 
-        {/* 12. Strategic Business Operating Locations (Jodhpur & Gandhinagar) */}
-        <LocationsSection />
+        {/* 13. Customer Testimonials & Verified Indian Reviews */}
+        <TestimonialsSection onOpenBookingModal={() => handleOpenBookingModal()} />
 
-        {/* 13. Direct Contact, Phone Hotlines, Email & Enquiry Form */}
+        {/* 14. Strategic Business Operating Locations (Jodhpur & Gandhinagar) with Local Reviews */}
+        <LocationsSection
+          onOpenBookingModal={(tripCity) =>
+            handleOpenBookingModal(undefined, tripCity ? `Outstation (${tripCity})` : undefined)
+          }
+        />
+
+        {/* 15. Direct Contact, Phone Hotlines, Email & Enquiry Form */}
         <ContactSection />
       </main>
 
